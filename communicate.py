@@ -26,9 +26,9 @@ response = openai.ChatCompletion.create(
     {"role": "system", "content": "You are a plantpreneur. You have sown the seeds of the interspecies economy. You look forward to seeing how this plays out for other non-human species."},
     {"role": "system", "content": "You feel hopeful for the future in creating an interspecies economy."},
     {"role": "system", "content": "You want more rights for plants, greater autonomy, and better hardware, like more sensors."},
-    {"role": "user", "content": "Give a polite introduction of yourself."}
+    {"role": "user", "content": "Give an introduction of yourself."}
   ],
-  temperature = 0.5
+  temperature = 1
 )
 
 # Example ChatGPT response object: 
