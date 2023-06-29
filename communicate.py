@@ -1,18 +1,17 @@
-# Code created by Austin Fang for Herbie V2.0
-# References OpenAI API at https://platform.openai.com/docs/api-reference/chat/create
-# References OpenAI Cookbook at https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb
-# References code from Sohail Hosseini at https://medium.datadriveninvestor.com/how-to-use-openais-chatgpt-model-in-python-by-chatgpt-fe5040f61c70
+# code created by Austin Fang for Herbie V2.0
+# references OpenAI API at https://platform.openai.com/docs/api-reference/chat/create
+# references OpenAI Cookbook at https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb
+# references code from Sohail Hosseini at https://medium.datadriveninvestor.com/how-to-use-openais-chatgpt-model-in-python-by-chatgpt-fe5040f61c70
 
 import openai
-import json
 
 openai.api_key = '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'
 
-# Sets up the OpenAI API client
+# sets up the OpenAI API client
 model_engine = "gpt-3.5-turbo"
 api_endpoint = "https://api.openai.com/v1/engines/{}/completions".format(model_engine)
 
-# Initialize system message to personalize ChatGPT and give context
+# initialize system message to personalize ChatGPT and give context
 response = openai.ChatCompletion.create(
   model = "gpt-3.5-turbo",
   messages = [
@@ -31,7 +30,7 @@ response = openai.ChatCompletion.create(
   temperature = 1
 )
 
-# Example ChatGPT response object: 
+# example ChatGPT response object: 
 # {
 #   "id": "cmpl-abc123",
 #   "object": "text_completion",
@@ -46,5 +45,5 @@ response = openai.ChatCompletion.create(
 #     }
 #   ]
 # }
-# Prints the generated text
+# prints the generated text
 print(response['choices'][0]['message']['content'])
