@@ -1,4 +1,4 @@
-# code created by Austin Fang for Herbie 2.0
+# code modified by Austin Fang and Amulya Bhattaram for Herbie 2.0
 # references Whisper GitHub at https://github.com/openai/whisper
 # references code from Ryan O'Connor at https://www.assemblyai.com/blog/how-to-run-openais-whisper-speech-recognition-model/
 
