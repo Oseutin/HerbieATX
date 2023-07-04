@@ -11,6 +11,10 @@ openai.api_key = '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'
 model_engine = "gpt-3.5-turbo"
 api_endpoint = "https://api.openai.com/v1/engines/{}/completions".format(model_engine)
 
+# read from the audio transcription
+with open('test.txt') as f:
+    line = f.readline()
+
 # initialize system message to personalize ChatGPT and give context
 response = openai.ChatCompletion.create(
   model = "gpt-3.5-turbo",
@@ -25,7 +29,8 @@ response = openai.ChatCompletion.create(
     {"role": "system", "content": "You are a plantpreneur. You have sown the seeds of the interspecies economy. You look forward to seeing how this plays out for other non-human species."},
     {"role": "system", "content": "You feel hopeful for the future in creating an interspecies economy."},
     {"role": "system", "content": "You want more rights for plants, greater autonomy, and better hardware, like more sensors."},
-    {"role": "user", "content": "Give an introduction of yourself."}
+    {"role": "user", "content": line}
+#    {"role": "user", "content": "Give an introduction of yourself."}
   ],
   temperature = 1
 )
