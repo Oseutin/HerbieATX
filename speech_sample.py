@@ -1013,3 +1013,5 @@ def pronunciation_assessment_configured_with_json():
         print("Speech Recognition canceled: {}".format(cancellation_details.reason))
         if cancellation_details.reason == speechsdk.CancellationReason.Error:
             print("Error details: {}".format(cancellation_details.error_details))
+
+speech_recognize_continuous_async_from_microphone()
