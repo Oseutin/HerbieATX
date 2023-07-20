@@ -7,6 +7,9 @@ namespace
 {
     public class transcribe
     {
-        
+        static void Main(string[] args) 
+        {
+            
+        }
     }
 }
