@@ -35,7 +35,6 @@ speech_key, service_region = "dc48a3b483f1489494e30955ff2c5481", "westeurope"
 weatherfilename = "whatstheweatherlike.wav"
 weatherfilenamemp3 = "whatstheweatherlike.mp3"
 
-
 def speech_recognize_once_from_mic():
     """performs one-shot speech recognition from the default microphone"""
     # <SpeechRecognitionWithMicrophone>
@@ -1015,3 +1014,4 @@ def pronunciation_assessment_configured_with_json():
             print("Error details: {}".format(cancellation_details.error_details))
 
 speech_recognize_continuous_async_from_microphone()
+#speech_recognize_once_from_mic()
