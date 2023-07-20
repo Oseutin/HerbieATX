@@ -10,8 +10,12 @@ Speech recognition samples for the Microsoft Cognitive Services Speech SDK
 import os
 import azure.cognitiveservices.speech as speechsdk
 
+# Set up the subscription info for the Speech Service:
+# Replace with your own subscription key and service region (e.g., "westus").
+speech_key, service_region = "dc48a3b483f1489494e30955ff2c5481", "westeurope"
+
 # This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"
-speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('dc48a3b483f1489494e30955ff2c5481'), region=os.environ.get('westeurope'))
+speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
 # The language of the voice that speaks.
