@@ -11,7 +11,7 @@ import os
 import azure.cognitiveservices.speech as speechsdk
 
 # This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"
-speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('SPEECH_KEY'), region=os.environ.get('SPEECH_REGION'))
+speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('dc48a3b483f1489494e30955ff2c5481'), region=os.environ.get('westeurope'))
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
 # The language of the voice that speaks.
