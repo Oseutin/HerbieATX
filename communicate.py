@@ -5,10 +5,10 @@
 
 import openai
 
-openai.api_key = "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"
+openai.api_key = "Insert_Key"
 
 # sets up the OpenAI API client
-model_engine = "gpt-3.5-turbo"
+model_engine = "text-davinci-003"
 api_endpoint = "https://api.openai.com/v1/engines/{}/completions".format(model_engine)
 
 # read from the audio transcription
