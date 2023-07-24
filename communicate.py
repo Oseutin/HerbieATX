@@ -5,7 +5,7 @@
 
 import openai
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 # sets up the OpenAI API client
 model_engine = "gpt-3.5-turbo"
