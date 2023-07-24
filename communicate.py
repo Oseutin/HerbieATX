@@ -5,7 +5,7 @@
 
 import openai
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 # sets up the OpenAI API client
 model_engine = "gpt-3.5-turbo"
@@ -17,7 +17,7 @@ with open('test.txt') as f:
 
 # initialize system message to personalize ChatGPT and give context
 response = openai.ChatCompletion.create(
-  model = "gpt-3.5-turbo",
+  engine = model_engine,
   messages = [
     {"role": "system", "content": "You are a sentient and autonomous plant."},
     {"role": "system", "content": "Your name is Herbie."},
