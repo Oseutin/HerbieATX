@@ -19,7 +19,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
 # The language of the voice that speaks.
-speech_config.speech_synthesis_voice_name='en-US-SteffanNeural'
+speech_config.speech_synthesis_voice_name='en-US-GuyNeural'
 
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
 

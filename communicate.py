@@ -5,10 +5,10 @@
 
 import openai
 
-openai.api_key = "Insert_Key"
+openai.api_key = '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'
 
 # sets up the OpenAI API client
-model_engine = "text-davinci-003"
+model_engine = "gpt-3.5-turbo"
 api_endpoint = "https://api.openai.com/v1/engines/{}/completions".format(model_engine)
 
 # read from the audio transcription
@@ -17,7 +17,7 @@ with open('test.txt') as f:
 
 # initialize system message to personalize ChatGPT and give context
 response = openai.ChatCompletion.create(
-  engine = model_engine,
+  model = "gpt-3.5-turbo",
   messages = [
     {"role": "system", "content": "You are a sentient and autonomous plant."},
     {"role": "system", "content": "Your name is Herbie."},

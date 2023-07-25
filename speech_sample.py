@@ -411,10 +411,10 @@ def speech_recognize_keyword_from_microphone():
 
     # Creates an instance of a keyword recognition model. Update this to
     # point to the location of your keyword recognition model.
-    model = speechsdk.KeywordRecognitionModel("YourKeywordRecognitionModelFile.table")
+    model = speechsdk.KeywordRecognitionModel("9c5af1eb-1b0a-4421-8166-ed10293ab644.table")
 
     # The phrase your keyword recognition model triggers on.
-    keyword = "YourKeyword"
+    keyword = "Herbie"
 
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
@@ -442,7 +442,8 @@ def speech_recognize_keyword_from_microphone():
         elif evt.result.reason == speechsdk.ResultReason.NoMatch:
             print('NOMATCH: {}'.format(evt))
 
-    # Connect callbacks to the events fired by the speech recognizer
+	
+# Connect callbacks to the events fired by the speech recognizer
     speech_recognizer.recognizing.connect(recognizing_cb)
     speech_recognizer.recognized.connect(recognized_cb)
     speech_recognizer.session_started.connect(lambda evt: print('SESSION STARTED: {}'.format(evt)))
@@ -1013,5 +1014,6 @@ def pronunciation_assessment_configured_with_json():
         if cancellation_details.reason == speechsdk.CancellationReason.Error:
             print("Error details: {}".format(cancellation_details.error_details))
 
-speech_recognize_continuous_async_from_microphone()
-#speech_recognize_once_from_mic()
+speech_recognize_keyword_from_microphone()
+# speech_recognize_continuous_async_from_microphone()
+# speech_recognize_once_from_mic()
