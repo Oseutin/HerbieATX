@@ -6,6 +6,7 @@
 """
 Speech recognition samples for the Microsoft Cognitive Services Speech SDK
 """
+# Edited and repurposed by Austin Fang for HerbieATX (previously Herbie V2.0)
 
 import os
 import azure.cognitiveservices.speech as speechsdk
@@ -19,13 +20,17 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
 # The language of the voice that speaks.
-speech_config.speech_synthesis_voice_name='en-US-GuyNeural'
+speech_config.speech_synthesis_voice_name='en-US-SteffanNeural'
+# Visit https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts for all voice options
 
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
 
 # Get text from the console and synthesize to the default speaker.
-print("Enter some text that you want to speak >")
-text = input()
+# print("Enter some text that you want to speak >")
+# text = input()
+
+input_file = open("test.txt", "r")
+text = input_file.read()
 
 speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
 

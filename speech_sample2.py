@@ -6,6 +6,7 @@
 """
 Speech recognition samples for the Microsoft Cognitive Services Speech SDK
 """
+# Edited and repurposed by Austin Fang for HerbieATX (previously Herbie V2.0)
 
 import json
 import string
@@ -45,6 +46,9 @@ def speech_recognize_keyword_from_microphone():
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
     done = False
+    
+    # Set up the output file for the transcript
+    output_file = open("test.txt", "w")
 
     def stop_cb(evt: speechsdk.SessionEventArgs):
         """callback that signals to stop continuous recognition upon receiving an event `evt`"""
@@ -65,13 +69,10 @@ def speech_recognize_keyword_from_microphone():
             print('RECOGNIZED KEYWORD: {}'.format(evt))
         elif evt.result.reason == speechsdk.ResultReason.RecognizedSpeech:
             print('RECOGNIZED: {}'.format(evt))
+            output_file.write(evt.result.text)
+            output_file.flush()
         elif evt.result.reason == speechsdk.ResultReason.NoMatch:
             print('NOMATCH: {}'.format(evt))
-    def write_to_file(evt: speechsdk.SpeechRecognitionEventArgs):
-        """callback for recognized event"""
-        f= open("test.txt", "w")
-        f.write(evt)
-        f.close()
 	
 # Connect callbacks to the events fired by the speech recognizer
     speech_recognizer.recognizing.connect(recognizing_cb)

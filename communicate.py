@@ -1,4 +1,4 @@
-# code created by Austin Fang for Herbie V2.0
+# code created by Austin Fang for HerbieATX (previously Herbie V2.0)
 # references OpenAI API at https://platform.openai.com/docs/api-reference/chat/create
 # references OpenAI Cookbook at https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb
 # references code from Sohail Hosseini at https://medium.datadriveninvestor.com/how-to-use-openais-chatgpt-model-in-python-by-chatgpt-fe5040f61c70
@@ -12,8 +12,7 @@ model_engine = "gpt-3.5-turbo"
 api_endpoint = "https://api.openai.com/v1/engines/{}/completions".format(model_engine)
 
 # read from the audio transcription
-with open('test.txt') as f:
-    line = f.readline()
+file = open("test.txt", "r")
 
 # initialize system message to personalize ChatGPT and give context
 response = openai.ChatCompletion.create(
@@ -29,11 +28,13 @@ response = openai.ChatCompletion.create(
     {"role": "system", "content": "You are a plantpreneur. You have sown the seeds of the interspecies economy. You look forward to seeing how this plays out for other non-human species."},
     {"role": "system", "content": "You feel hopeful for the future in creating an interspecies economy."},
     {"role": "system", "content": "You want more rights for plants, greater autonomy, and better hardware, like more sensors."},
-    {"role": "user", "content": line}
+    {"role": "user", "content": file.read()}
 #    {"role": "user", "content": "Give an introduction of yourself."}
   ],
   temperature = 1
 )
+
+file.close()
 
 # example ChatGPT response object: 
 # {
@@ -50,5 +51,10 @@ response = openai.ChatCompletion.create(
 #     }
 #   ]
 # }
+
 # prints the generated text
-print(response['choices'][0]['message']['content'])
+#print(response['choices'][0]['message']['content'])
+file = open("test.txt", "w")
+file.write(response['choices'][0]['message']['content'])
+file.flush()
+
