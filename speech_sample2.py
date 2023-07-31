@@ -7,12 +7,15 @@
 Speech recognition samples for the Microsoft Cognitive Services Speech SDK
 """
 # Edited and repurposed by Austin Fang for HerbieATX (previously Herbie V2.0)
+#! / Usr / bin / python
+# - * - Coding: UTF-8 - * -
 
 import json
 import string
 import time
 import threading
 import wave
+import codecs
 
 try:
     import azure.cognitiveservices.speech as speechsdk
@@ -42,13 +45,12 @@ def speech_recognize_keyword_from_microphone():
 
     # The phrase your keyword recognition model triggers on.
     keyword = "Herbie"
-
-    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
+    auto_detect_source_language_config = \
+        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["zh-TW", "en-US", "es-ES", "ca-ES"])
+    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, auto_detect_source_language_config=auto_detect_source_language_config)
+    # speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
     done = False
-    
-    # Set up the output file for the transcript
-    output_file = open("test.txt", "w")
 
     def stop_cb(evt: speechsdk.SessionEventArgs):
         """callback that signals to stop continuous recognition upon receiving an event `evt`"""
@@ -68,9 +70,19 @@ def speech_recognize_keyword_from_microphone():
         if evt.result.reason == speechsdk.ResultReason.RecognizedKeyword:
             print('RECOGNIZED KEYWORD: {}'.format(evt))
         elif evt.result.reason == speechsdk.ResultReason.RecognizedSpeech:
-            print('RECOGNIZED: {}'.format(evt))
-            output_file.write(evt.result.text)
-            output_file.flush()
+            auto_detect_source_language_result = speechsdk.AutoDetectSourceLanguageResult(evt.result)
+            print("Recognized: {} in language {}".format(evt.result.text, auto_detect_source_language_result.language))
+            # print('RECOGNIZED: {}'.format(evt))
+            # Set up the output file for the transcript
+            # output_file = open("test.txt", "w")
+            # Save the speech-to-text in a separate file so that communicate.py can distinguish between system and user instructions
+            with codecs.open("test.txt", "w", encoding = "utf-8") as output_file:
+                output_file.write("{}".format(evt.result.text))
+                output_file.close()
+            # Save the identified spoken language in a separate text file so that speech_synthesis.py can access and choose the right text-to-speech voice
+            with codecs.open("language.txt", "w", encoding = "utf-8") as language_file:
+                language_file.write(auto_detect_source_language_result.language)
+                language_file.close()
         elif evt.result.reason == speechsdk.ResultReason.NoMatch:
             print('NOMATCH: {}'.format(evt))
 	
@@ -86,7 +98,7 @@ def speech_recognize_keyword_from_microphone():
 
     # Start keyword recognition
     speech_recognizer.start_keyword_recognition(model)
-    print('Say something starting with "{}" followed by whatever you want...'.format(keyword))
+    print('\nSay something starting with "{}" followed by whatever you want...'.format(keyword))
     while not done:
         time.sleep(.5)
 

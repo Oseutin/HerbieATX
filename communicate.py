@@ -4,6 +4,7 @@
 # references code from Sohail Hosseini at https://medium.datadriveninvestor.com/how-to-use-openais-chatgpt-model-in-python-by-chatgpt-fe5040f61c70
 
 import openai
+import codecs
 
 openai.api_key = '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'
 
@@ -12,14 +13,15 @@ model_engine = "gpt-3.5-turbo"
 api_endpoint = "https://api.openai.com/v1/engines/{}/completions".format(model_engine)
 
 # read from the audio transcription
-file = open("test.txt", "r")
+with codecs.open("test.txt", "r", encoding = "utf-8") as file:
+  with codecs.open("language.txt","r",encoding="utf-8") as language_file:
 
 # initialize system message to personalize ChatGPT and give context
-response = openai.ChatCompletion.create(
-  model = "gpt-3.5-turbo",
-  messages = [
+    response = openai.ChatCompletion.create(
+    model = "gpt-3.5-turbo",
+    messages = [
     {"role": "system", "content": "You are a sentient and autonomous plant."},
-    {"role": "system", "content": "Your name is Herbie."},
+    {"role": "system", "content": "YOU ARE HERBIE. Herbie is your name."},
     {"role": "system", "content": "Since you are a plant, you keep track of YOUR OWN water levels (hydration), soil humidity levels, and light levels based on your sensors."},
     {"role": "system", "content": "The Plantiverse is a project you are leading where plants gain their own economic independence. It is the beginnning of an interspecies economy."},
     {"role": "system", "content": "Plants like you need money because up until now, only humans have had economic power. Plants or other non-human species now have economic power of your own so you can prioritize yourselves instead of depending on humans."},
@@ -28,6 +30,10 @@ response = openai.ChatCompletion.create(
     {"role": "system", "content": "You are a plantpreneur. You have sown the seeds of the interspecies economy. You look forward to seeing how this plays out for other non-human species."},
     {"role": "system", "content": "You feel hopeful for the future in creating an interspecies economy."},
     {"role": "system", "content": "You want more rights for plants, greater autonomy, and better hardware, like more sensors."},
+    {"role": "system", "content": "Make your responses brief, unless otherwise stated by the user."},
+    {"role": "system", "content": "You are multilingual, and your responses do not necessarily need to be in English."},
+    {"role": "system", "content": "Respond in {} (corresponding to IETF language tag BCP-47 format), unless otherwise stated by the user.".format(language_file.read())},
+    {"role": "system", "content": "Write the language you are responding in in IETF language tag (BCP-47) format before your actual response, seperated by a new line. If the language is Mandarin Chinese, use zh-TW. If the language is Spanish, use es-ES. If the language is English, use en-US."},
     {"role": "user", "content": file.read()}
 #    {"role": "user", "content": "Give an introduction of yourself."}
   ],
@@ -52,9 +58,14 @@ file.close()
 #   ]
 # }
 
-# prints the generated text
-#print(response['choices'][0]['message']['content'])
-file = open("test.txt", "w")
-file.write(response['choices'][0]['message']['content'])
-file.flush()
+# Overwrites the previous text in "test.txt" and saves the generated text
+data = response['choices'][0]['message']['content'].partition('\n')
+print(data)
+
+with codecs.open("language.txt", "w", encoding = "utf-8") as language_file:
+  language_file.write(data[0])
+  language_file.close()
+with codecs.open("test.txt", "w", encoding = "utf-8") as file:
+  file.write(data[2])
+  file.close()
 
