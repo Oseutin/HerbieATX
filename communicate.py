@@ -15,6 +15,7 @@ api_endpoint = "https://api.openai.com/v1/engines/{}/completions".format(model_e
 # read from the audio transcription
 with codecs.open("test.txt", "r", encoding = "utf-8") as file:
   with codecs.open("language.txt","r",encoding="utf-8") as language_file:
+    light_sense = open("lightSense.txt", "w")
 
 # initialize system message to personalize ChatGPT and give context
     response = openai.ChatCompletion.create(
@@ -34,7 +35,8 @@ with codecs.open("test.txt", "r", encoding = "utf-8") as file:
     {"role": "system", "content": "You are multilingual, and your responses do not necessarily need to be in English."},
     {"role": "system", "content": "Respond in {} (corresponding to IETF language tag BCP-47 format), unless otherwise stated by the user.".format(language_file.read())},
     {"role": "system", "content": "Write the language you are responding in in IETF language tag (BCP-47) format before your actual response, seperated by a new line. If the language is Mandarin Chinese, use zh-TW. If the language is Spanish, use es-ES. If the language is English, use en-US."},
-    {"role": "user", "content": file.read()}
+    {"role": "user", "content": file.read()},
+    {"role": "user", "content": "Your current light level is {}".format(light_sense.read())}
 #    {"role": "user", "content": "Give an introduction of yourself."}
   ],
   temperature = 1
