@@ -4,6 +4,7 @@ import importlib
 import speech_sample2
 import communicate
 import speech_synthesis
+import ser
 while True:
     importlib.reload(speech_sample2)
     importlib.reload(communicate)
