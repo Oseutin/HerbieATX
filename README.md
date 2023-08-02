@@ -34,7 +34,7 @@ https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-supp
 
 As for speech detection, the language options that are available are unfortunately more limited. You may view the available options here:  
 https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=stt  
-Please note that languages with speech-to-text support will be indicated with the word "Audio" under the column of "Custom Speech support." To change the voice used by HerbieATX, modify the entries of the list in `speech_sample2.py` in the argument of `speechsdk.languageconfig.AutoDetectSourceLanguageConfig` on line 43. Please note that **only four entries** may be added a time due to limitations with language recognition.  
+Please note that languages with speech-to-text support will be indicated with the word "Audio" under the column of "Custom Speech support." To change the languages recognized by HerbieATX, modify the entries of the list in `speech_sample2.py` in the argument of `speechsdk.languageconfig.AutoDetectSourceLanguageConfig` on line 43. Please note that **only four entries** may be added a time due to limitations with language recognition. By default, American English `en-US`, Taiwanese Mandarin Chinese `zh-TW`, Castilian Spanish `es-ES`, and Catalan/Valencian `ca-ES` are the languages that can be recognized by HerbieATX.  
   
 Currently, HerbieATX only responds to one keyword, "Herbie," adapted to the American English (`en-US`) language. To add more keyword options, like "Hello Herbie," or expand on the keyword table so that speech detection is more accurate, refer to this resource:  
 https://learn.microsoft.com/en-us/azure/ai-services/speech-service/custom-keyword-basics?pivots=programming-language-python
