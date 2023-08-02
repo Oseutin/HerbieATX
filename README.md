@@ -12,6 +12,7 @@ To run a python file typ `python3.8 -m filename.py`. When you are done accessing
 Before running the contents of this repository (having been tested only on Windows 11 and Linux Ubuntu 18.04 or newer), the following modules or packages are needed. To make this ReadMe more concise, links will be provided to resources (respective to the modules) that were used. Please follow the instructions provided by these linked resources. 
 
 OpenAI ChatGPT API with Python:  
+https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python/from-microphone  
 Microsoft Azure Cognitive Speech Services API with Python:  
 
 Use the latest version of Python, `pip`, and `pandas` available to your system. A version of **at least Python 3.8 or newer** is required.  
