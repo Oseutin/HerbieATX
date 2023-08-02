@@ -29,8 +29,12 @@ The files `speech_sample2.py`, `speech_synthesis.py`, `communicate.py`, and `mai
 To communicate with Herbie, run `main.py` in any terminal application. In the Linux Ubuntu OS on the Jetson, you may use the command `python3.8 main.py` to run the file. 
 
 ## Customization and future development
-This webpage includes all of the supported language options for text-to-speech. To change the voice used by HerbieATX, modify the key-value dictionary pairs in the `speech_synthesis.py` file so that the key is the IETF language tag, and the value is the respective speech_synthesis_voice_name as determined by the voice options linked below:  
+The following webpage includes all of the supported language options for text-to-speech. To change the voice used by HerbieATX, modify the key-value dictionary pairs in the `speech_synthesis.py` file so that the key is the IETF language tag, and the value is the respective speech_synthesis_voice_name as determined by the voice options linked below:  
 https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts  
 
+As for speech detection, the language options that are available are unfortunately more limited. You may view the available options here:  
+https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=stt  
+Please note that languages with speech-to-text support will be indicated with the word "Audio" under the column of "Custom Speech support." To change the voice used by HerbieATX, modify the entries of the list in `speech_sample2.py` in the argument of `speechsdk.languageconfig.AutoDetectSourceLanguageConfig` on line 43. Please note that **only four entries** may be added a time due to limitations with language recognition.  
+  
 Currently, HerbieATX only responds to one keyword, "Herbie," adapted to the American English (`en-US`) language. To add more keyword options, like "Hello Herbie," or expand on the keyword table so that speech detection is more accurate, refer to this resource:  
 https://learn.microsoft.com/en-us/azure/ai-services/speech-service/custom-keyword-basics?pivots=programming-language-python
