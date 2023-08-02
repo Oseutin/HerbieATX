@@ -9,7 +9,7 @@ Change the directory to access Herbie's programs by typing `cd herbieATX`. To op
 To run a python file typ `python3.8 -m filename.py`. When you are done accessing and running code type `deactivate` to close the virtual environment before exiting the terminal.  
 
 ## Required Python modules
-Before running the contents of this repository (having been tested only on Windows 11 and Linux Ubuntu 18.04 or newer), the following modules or packages are needed. To make this ReadMe more concise, links will be provided to resources (respective to the modules) that were used. Please follow the instructions provided by these linked resources. 
+Before running the contents of this repository (having been tested only on Windows 11 and Linux Ubuntu 18.04 or newer), the following modules or packages are needed. If you are using the original Jetson Nano developed by the UT team for HerbieATX, you do not need to worry about this section, as all modules have already been installed. To make this ReadMe more concise, links will be provided to resources (respective to the modules) that were used. Please follow the instructions provided by these linked resources. 
 
 OpenAI ChatGPT API with Python:  
 https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb  
