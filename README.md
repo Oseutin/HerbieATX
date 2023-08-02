@@ -25,7 +25,7 @@ https://jetsonhacks.com/2023/06/12/upgrade-python-on-jetson-nano-tutorial/
 ## Communicating with HerbieATX
 The files `speech_sample2.py`, `speech_synthesis.py`, `communicate.py`, and `main.py` are imperative to communicating with HerbieATX.  
 
-To communicate with Herbie, run `main.py` in any terminal application. In the Linux Ubuntu OS on the Jetson, you may use the command `python3.8 main.py` to run the file. 
+To communicate with Herbie, run `main.py` in any terminal application. In the Linux Ubuntu OS on the Jetson, you may use the command `python3.8 main.py` to run the file. It is not recommended to run the "modular" files separately, as they are dependent on one another for transferring information through text files such as `language.txt` or `test.txt`.
 
 ## Customization and future development
 The following webpage includes all of the supported language options for text-to-speech. To change the voice used by HerbieATX, modify the key-value pair dictionary in the `speech_synthesis.py` file so that the key is the IETF language tag, and the value is the respective speech_synthesis_voice_name as determined by the voice options linked below:  
