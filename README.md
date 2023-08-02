@@ -11,4 +11,4 @@ To run a python file typ `python3.8 -m filename.py`. When you are done accessing
 ## Required Python modules
 Before running the contents of this repository (having been tested only on Windows 11 and Linux Ubuntu 18.04 or newer), the following modules or packages will have to be installed:  
 
-Use the latest version of Python, `pip`, and `pandas` available to your system. A version of at least Python 3.8 or newer is required. 
+Use the latest version of Python, `pip`, and `pandas` available to your system. A version of **at least Python 3.8 or newer** is required. 
