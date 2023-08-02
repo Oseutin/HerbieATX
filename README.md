@@ -5,8 +5,7 @@
 ## How to access/run files on the Jetson
 Open the LXTerminal on the Jetson, and activate the virtual environment by pasting the following line of code:  
  ```source ~/.py3venv/bin/activate```  
-Change the directory to access Herbie's programs by typing `cd herbieATX`. To open a file type `gedit filename.py`. The same line can be used to create a new file with the filename of choice.  
-To run a python file typ `python3.8 -m filename.py`. When you are done accessing and running code type `deactivate` to close the virtual environment before exiting the terminal.  
+Change the directory to access Herbie's programs by typing `cd herbieATX`. To open a file type `gedit filename.py`. The same line can be used to create a new file with the filename of choice. To run a python file typ `python3.8 filename.py`. When you are done accessing and running code type `deactivate` to close the virtual environment before exiting the terminal.  
 
 ## Required Python modules
 Before running the contents of this repository (having been tested only on Windows 11 and Linux Ubuntu 18.04 or newer), the following modules or packages are needed. If you are using the original Jetson Nano developed by the UT team for HerbieATX, you do not need to worry about this section, as all modules have already been installed. To make this ReadMe more concise, links will be provided to resources (respective to the modules) that were used by the team. Please follow the instructions provided by these linked resources, as they provide excellent step-by-step directions. 
