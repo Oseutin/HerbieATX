@@ -7,14 +7,8 @@
 Speech recognition samples for the Microsoft Cognitive Services Speech SDK
 """
 # Edited and repurposed by Austin Fang for HerbieATX (previously Herbie V2.0)
-#! / Usr / bin / python
-# - * - Coding: UTF-8 - * -
 
-import json
-import string
 import time
-import threading
-import wave
 import codecs
 
 try:

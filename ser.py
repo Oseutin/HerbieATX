@@ -1,3 +1,6 @@
+# Currently unused by HerbieATX due to Jetson's inability to process serial data from Arduino-based sensors in real-time
+# Created by Austin Fang and Amulya Bhattaram
+
 import serial
 with serial.Serial('/dev/ttyACM0', 9600, timeout=10) as ser:  # open serial port
     while True:

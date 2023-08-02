@@ -8,7 +8,7 @@ Speech recognition samples for the Microsoft Cognitive Services Speech SDK
 """
 # Edited and repurposed by Austin Fang for HerbieATX (previously Herbie V2.0)
 
-import os
+import sys
 import azure.cognitiveservices.speech as speechsdk
 import codecs
 
@@ -20,19 +20,22 @@ speech_key, service_region = "dc48a3b483f1489494e30955ff2c5481", "westeurope"
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
+speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
+
 # The language of the voice that speaks is determined by a key-value pair dictionary
 # Visit https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts for all voice options
 # The key is the IETF language tag, and the value is the respective speech_synthesis_voice_name as determined by the voice options linked above
-dict = {'en-US':'en-GB-ThomasNeural', 'zh-TW':'zh-TW-HsiaoChenNeural', 'es-ES':'es-ES-ElviraNeural', 'ca-ES':'ca-ES-EnricNeural', 'te-IN':'te-IN-MohanNeural'}
+dict = {'en-US':'en-US-TonyNeural', 'zh-TW':'zh-TW-HsiaoChenNeural', 'es-ES':'es-ES-ElviraNeural', 'ca-ES':'ca-ES-EnricNeural', 'te-IN':'te-IN-MohanNeural'}
 with codecs.open("language.txt", "r", "utf-8") as language_file: 
-    speech_config.speech_synthesis_voice_name = list(dict.values())[list(dict.keys()).index(language_file.read())]
-
-speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
-
-# Get text from the console and synthesize to the default speaker.
-# print("Enter some text that you want to speak >")
-# text = input()
-
+    try:
+        speech_config.speech_synthesis_voice_name = list(dict.values())[list(dict.keys()).index(language_file.read())]
+    except ValueError:
+        # Account for ValueError when language.txt receives the main prompt text instead of a language tag, which is most likely due to an unclear input
+        speech_config.speech_synthesis_voice_name = list(dict.values())[list(dict.keys()).index(0)]
+        speech_synthesizer.speak_text_async("Sorry, I didn't hear you. Could you repeat that please?").get()
+        print('A ValueError has been detected, most likely due to an unclear input. Please try speaking more clearly again.')
+        sys.exit(0)
+        
 with codecs.open("test.txt","r",encoding="utf-8") as input_file:
     text = input_file.read()
 
