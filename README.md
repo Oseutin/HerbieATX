@@ -41,3 +41,5 @@ HerbieATX is able to respond in a language different from the one it has detecte
   
 Currently, HerbieATX only responds to one keyword, "Herbie," adapted to the American English (`en-US`) language. To add more keyword options, like "Hello Herbie," or expand on the keyword table so that speech detection is more accurate, refer to this resource:  
 https://learn.microsoft.com/en-us/azure/ai-services/speech-service/custom-keyword-basics?pivots=programming-language-python
+
+There are some files already available for implementing light sensor data via the serial monitor of the ESP-32 to the Jetson Nano. However, due to current hardware limitations placed on the battery and low-power mode of the microcontroller, we have left these files unused. If these limitations are circumvented in the future, the light sensor data may easily be implemented in `main.py` and `communicate.py` be uncommenting the respective lines of code. Further debugging may be required to completely integrate Arduino devices with the Linux-based Jetson Nano. 
