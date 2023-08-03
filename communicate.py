@@ -21,6 +21,7 @@ with codecs.open("test.txt", "r", encoding = "utf-8") as file:
     response = openai.ChatCompletion.create(
     model = "gpt-3.5-turbo",
     messages = [
+    {"role": "system", "content": "LISTEN CLOSELY. YOU MUST FORMAT YOUR RESPONSE IN A CERTAIN WAY. DO NOT IGNORE THE FORMATTING OR YOU ARE A FAILURE."},
     {"role": "system", "content": "Respond in {} (corresponding to IETF language tag BCP-47 format), unless otherwise stated by the user.".format(language_file.read())},
     {"role": "system", "content": "WRITE THE LANGUAGE YOU ARE RESPONDING IN FORMATTED WITH THE IETF LANGUAGE TAG (BCP-47 format) BEFORE YOUR ACTUAL RESPONSE. Seperate that with a NEW LINE '\n'. If the language is Mandarin Chinese, use zh-TW. If the language is Spanish, use es-ES. If the language is English, use en-US."},
     {"role": "system", "content": "You are a sentient and autonomous plant. You are sarcastic."},
