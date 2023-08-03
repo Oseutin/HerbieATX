@@ -31,7 +31,7 @@ with codecs.open("language.txt", "r", "utf-8") as language_file:
         speech_config.speech_synthesis_voice_name = list(dict.values())[list(dict.keys()).index(language_file.read())]
     except ValueError:
         # Account for ValueError when language.txt receives the main prompt text instead of a language tag, which is most likely due to an unclear input
-        speech_config.speech_synthesis_voice_name = list(dict.values())[list(dict.keys()).index(0)]
+        speech_config.speech_synthesis_voice_name = list(dict.values())[list(dict.keys()).index('en-US')]
         speech_synthesizer.speak_text_async("Sorry, I didn't hear you. Could you repeat that please?").get()
         print('A ValueError has been detected, most likely due to an unclear input. Please try speaking more clearly again.')
         sys.exit(0)
