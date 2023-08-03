@@ -34,7 +34,6 @@ with codecs.open("language.txt", "r", "utf-8") as language_file:
         speech_config.speech_synthesis_voice_name = list(dict.values())[list(dict.keys()).index('en-US')]
         speech_synthesizer.speak_text_async("Sorry, I didn't hear you. Could you repeat that please?").get()
         print('A ValueError has been detected, most likely due to an unclear input. Please try speaking more clearly again.')
-        import main
         sys.exit(0)
         
 with codecs.open("test.txt","r",encoding="utf-8") as input_file:
